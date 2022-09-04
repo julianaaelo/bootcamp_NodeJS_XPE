@@ -1,0 +1,47 @@
+2022-09-04T12:26:33.112Z [my-bank-api] info: API criada e rodando na porta 3000
+2022-09-04T12:27:05.184Z [my-bank-api] error: ENOENT: no such file or directory, open 'accounts.json'
+2022-09-04T12:27:11.744Z [my-bank-api] error: ENOENT: no such file or directory, open 'accounts.json'
+2022-09-04T12:27:29.016Z [my-bank-api] info: API criada e rodando na porta 3000
+2022-09-04T12:32:28.509Z [my-bank-api] info: API rodando na porta 3000
+2022-09-04T12:32:58.842Z [my-bank-api] info: API rodando na porta 3000
+2022-09-04T12:33:45.849Z [my-bank-api] info: API rodando na porta 3000
+2022-09-04T12:34:40.475Z [my-bank-api] info: API rodando na porta 3000
+2022-09-04T12:35:11.733Z [my-bank-api] info: API rodando na porta 3000
+2022-09-04T12:35:41.320Z [my-bank-api] info: API rodando na porta 3000
+2022-09-04T12:36:00.201Z [my-bank-api] info: API rodando na porta 3000
+2022-09-04T12:36:37.679Z [my-bank-api] info: API rodando na porta 3000
+2022-09-04T12:37:38.767Z [my-bank-api] info: POST / account - {"nextId":3,"accounts":[{"id":2,"name":"Juliana","balance":200}]}
+2022-09-04T12:37:47.309Z [my-bank-api] info: POST / account - {"nextId":4,"accounts":[{"id":2,"name":"Juliana","balance":200},{"id":3,"name":"Milena","balance":200}]}
+2022-09-04T12:37:56.565Z [my-bank-api] info: POST / account - {"nextId":5,"accounts":[{"id":2,"name":"Juliana","balance":200},{"id":3,"name":"Milena","balance":200},{"id":4,"name":"Maria","balance":200}]}
+2022-09-04T12:39:23.724Z [my-bank-api] info: API rodando na porta 3000
+2022-09-04T12:39:27.693Z [my-bank-api] info: GET / account
+2022-09-04T12:39:51.738Z [my-bank-api] info: API rodando na porta 3000
+2022-09-04T12:40:05.404Z [my-bank-api] info: API rodando na porta 3000
+2022-09-04T12:40:19.399Z [my-bank-api] info: GET / account
+2022-09-04T12:40:27.276Z [my-bank-api] info: POST / account - {"nextId":6,"accounts":[{"id":2,"name":"Juliana","balance":200},{"id":3,"name":"Milena","balance":200},{"id":4,"name":"Maria","balance":200},{"id":5,"name":"Maria","balance":200}]}
+2022-09-04T12:41:14.124Z [my-bank-api] info: PUT / account - {"id":"4","name":"Maria","balance":250}
+2022-09-04T12:41:20.921Z [my-bank-api] info: GET / account
+2022-09-04T12:41:35.844Z [my-bank-api] info: PUT / account - {"id":"4","name":"Maria","balance":250}
+2022-09-04T12:41:51.648Z [my-bank-api] info: GET / account
+2022-09-04T12:43:54.639Z [my-bank-api] info: PUT / account - {"id":"4","name":"Maria","balance":250}
+2022-09-04T12:45:54.360Z [my-bank-api] info: API rodando na porta 3000
+2022-09-04T12:46:03.400Z [my-bank-api] info: PUT / account - {"id":"4","name":"Maria","balance":250}
+2022-09-04T12:46:07.749Z [my-bank-api] info: GET / account
+2022-09-04T12:47:11.121Z [my-bank-api] info: GET / account
+2022-09-04T12:47:19.134Z [my-bank-api] info: PUT / account - {"id":"4","name":"Maria","balance":250}
+2022-09-04T12:47:28.481Z [my-bank-api] info: GET / account
+2022-09-04T12:47:52.816Z [my-bank-api] info: PUT / account - {"id":4,"name":"Maria","balance":250}
+2022-09-04T12:47:57.892Z [my-bank-api] info: GET / account
+2022-09-04T12:48:28.136Z [my-bank-api] info: DELETE / account/:id - 4
+2022-09-04T12:48:32.858Z [my-bank-api] info: GET / account/:id
+2022-09-04T12:48:38.728Z [my-bank-api] info: GET / account
+2022-09-04T12:48:49.387Z [my-bank-api] info: GET / account/:id
+2022-09-04T12:50:47.551Z [my-bank-api] info: PATCH / account/updateBalance - {"id":3,"balance":3000}
+2022-09-04T12:50:56.738Z [my-bank-api] info: PATCH / account/updateBalance - {"id":2,"balance":3000}
+2022-09-04T12:51:01.596Z [my-bank-api] info: GET / account/:id
+2022-09-04T12:51:08.103Z [my-bank-api] info: GET / account
+2022-09-04T12:51:48.364Z [my-bank-api] info: GET / account
+2022-09-04T12:51:49.766Z [my-bank-api] info: GET / account
+2022-09-04T12:51:59.541Z [my-bank-api] info: API rodando na porta 3000
+2022-09-04T12:52:03.442Z [my-bank-api] info: GET / account
+2022-09-04T12:52:04.184Z [my-bank-api] info: GET / account

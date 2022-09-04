@@ -18,8 +18,8 @@ router.post("/", async (req, res, next) => {
     // pegar o account do body e adicionar no parametro accounts do arquivo json;
     data.accounts.push(account);
     await writeFile("accounts.json", JSON.stringify(data));
-    console.log(account);
     res.send(data);
+    logger.info(`POST / account - ${JSON.stringify(data)}`);
   } catch (err) {
     next(err);
   }
@@ -30,6 +30,7 @@ router.get("/", async (req, res, next) => {
     const data = JSON.parse(await readFile("accounts.json"));
     delete data.nextId;
     res.send(data);
+    logger.info(`GET / account`);
   } catch (err) {
     next(err);
   }
@@ -42,6 +43,7 @@ router.get("/:id", async (req, res, next) => {
       (account) => account.id === parseInt(req.params.id)
     );
     res.send(account);
+    logger.info(`GET / account/:id`);
   } catch (err) {
     next(err);
   }
@@ -58,7 +60,7 @@ router.delete("/:id", async (req, res, next) => {
     // sobrescreve o data atualizado no arquivo json;
     await writeFile("accounts.json", JSON.stringify(data, null, 2));
     res.end();
-    console.log(data);
+    logger.info(`DELETE / account/:id - ${req.params.id}`);
   } catch {
     next(err);
   }
@@ -75,8 +77,8 @@ router.put("/", async (req, res, next) => {
     data.accounts[index] = account;
     await writeFile("accounts.json", JSON.stringify(data));
     res.send(account);
-    console.log(account);
-  } catch {
+    logger.info(`PUT / account - ${JSON.stringify(account)}`);
+  } catch (err) {
     next(err);
   }
 });
@@ -92,13 +94,14 @@ router.patch("/updateBalance", async (req, res, next) => {
     data.accounts[index].balance = account.balance;
     await writeFile("accounts.json", JSON.stringify(data));
     res.send(data.accounts[index]);
+    logger.info(`PATCH / account/updateBalance - ${JSON.stringify(account)}`);
   } catch {
     next(err);
   }
 });
 
 router.use((err, req, res, next) => {
-  console.log(err);
+  global.logger.error(`${err.message}`);
   res.status(400).send({ error: err.message });
 });
 

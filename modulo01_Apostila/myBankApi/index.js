@@ -2,6 +2,22 @@
 import express from "express";
 // Importando o roteador accounts
 import accountsRouter from "./routes/accounts.js";
+import winston from "winston";
+
+const { combine, timestamp, label, printf } = winston.format;
+const myFormat = printf(({ level, message, label, timestamp }) => {
+  return `${timestamp} [${label}] ${level}: ${message}`;
+});
+
+global.logger = winston.createLogger({
+  level: "silly",
+  transports: [
+    new winston.transports.File({
+      filename: "my-bank-api.log",
+    }),
+  ],
+  format: combine(label({ label: "my-bank-api" }), timestamp(), myFormat),
+});
 
 // Importando File System para criar operações assíncronas e utilizar as promises;
 import { promises as fs } from "fs";
@@ -22,15 +38,19 @@ app.listen(3000, async () => {
   // readFile vai verificar se existe o arquivo json;
   try {
     await readFile("accounts.json");
-    console.log("API rodando na porta 3000");
+    global.logger.info("API rodando na porta 3000");
   } catch {
     const initialJson = {
       nextId: 1,
       accounts: [],
     };
     // caso não tenha o arquivo o writeFile irá criar;
-    writeFile("accounts.json", JSON.stringify(initialJson)).then(() => {
-      console.log("API criada e rodando na porta 3000");
-    });
+    writeFile("accounts.json", JSON.stringify(initialJson))
+      .then(() => {
+        global.logger.info("API criada e rodando na porta 3000");
+      })
+      .catch((err) => {
+        logger.error(err);
+      });
   }
 });
