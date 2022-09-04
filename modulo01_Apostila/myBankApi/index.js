@@ -30,9 +30,7 @@ app.listen(3000, async () => {
     };
     // caso não tenha o arquivo o writeFile irá criar;
     writeFile("accounts.json", JSON.stringify(initialJson)).then(() => {
-      console.log("API criada e rodando na porta 3000").catch((err) => {
-        console.log(err);
-      });
+      console.log("API criada e rodando na porta 3000");
     });
   }
 });

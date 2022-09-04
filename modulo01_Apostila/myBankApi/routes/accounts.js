@@ -45,5 +45,22 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    // faz a leitura do arquivo json;
+    const data = JSON.parse(await readFile("accounts.json"));
+    // o find retorna tudo o que for verdadeiro;
+    data.accounts = data.accounts.filter(
+      (account) => account.id !== parseInt(req.params.id)
+    );
+    // sobrescreve o data atualizado no arquivo json;
+    await writeFile("accounts.json", JSON.stringify(data, null, 2));
+    res.end();
+    console.log(data);
+  } catch {
+    res.status(400).send({ error: err.message });
+  }
+});
+
 // Exportando o roteador;
 export default router;
