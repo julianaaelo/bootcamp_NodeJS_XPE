@@ -7,7 +7,7 @@ const { readFile, writeFile } = fs;
 // Criando objeto para roteador
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", async (req, res, next) => {
   try {
     // armazenando as informações do body;
     let account = req.body;
@@ -20,20 +20,22 @@ router.post("/", async (req, res) => {
     await writeFile("accounts.json", JSON.stringify(data));
     console.log(account);
     res.send(data);
-  } catch (err) {}
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
   try {
     const data = JSON.parse(await readFile("accounts.json"));
     delete data.nextId;
     res.send(data);
   } catch (err) {
-    res.status(400).send({ error: err.message });
+    next(err);
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const data = JSON.parse(await readFile("accounts.json"));
     const account = data.accounts.find(
@@ -41,11 +43,11 @@ router.get("/:id", async (req, res) => {
     );
     res.send(account);
   } catch (err) {
-    res.status(400).send({ error: err.message });
+    next(err);
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", async (req, res, next) => {
   try {
     // faz a leitura do arquivo json;
     const data = JSON.parse(await readFile("accounts.json"));
@@ -58,11 +60,11 @@ router.delete("/:id", async (req, res) => {
     res.end();
     console.log(data);
   } catch {
-    res.status(400).send({ error: err.message });
+    next(err);
   }
 });
 
-router.put("/", async (req, res) => {
+router.put("/", async (req, res, next) => {
   try {
     // Armazenando a requisição do body;
     const account = req.body;
@@ -75,11 +77,11 @@ router.put("/", async (req, res) => {
     res.send(account);
     console.log(account);
   } catch {
-    res.status(400).send({ error: err.message });
+    next(err);
   }
 });
 
-router.patch("/updateBalance", async (req, res) => {
+router.patch("/updateBalance", async (req, res, next) => {
   try {
     // Armazenando a requisição do body;
     const account = req.body;
@@ -91,8 +93,13 @@ router.patch("/updateBalance", async (req, res) => {
     await writeFile("accounts.json", JSON.stringify(data));
     res.send(data.accounts[index]);
   } catch {
-    res.status(400).send({ error: err.message });
+    next(err);
   }
+});
+
+router.use((err, req, res, next) => {
+  console.log(err);
+  res.status(400).send({ error: err.message });
 });
 
 // Exportando o roteador;
