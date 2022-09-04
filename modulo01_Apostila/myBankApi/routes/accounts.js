@@ -62,5 +62,22 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+router.put("/", async (req, res) => {
+  try {
+    // Armazenando a requisição do body;
+    const account = req.body;
+    // Fazendo a leitura do arquivo json;
+    const data = JSON.parse(await readFile("accounts.json"));
+    // pegando o conteúdo da posição index que for verdadeira;
+    const index = data.accounts.findIndex((a) => a.id === account.id);
+    data.accounts[index] = account;
+    await writeFile("accounts.json", JSON.stringify(data));
+    res.send(account);
+    console.log(account);
+  } catch {
+    res.status(400).send({ error: err.message });
+  }
+});
+
 // Exportando o roteador;
 export default router;
