@@ -79,5 +79,21 @@ router.put("/", async (req, res) => {
   }
 });
 
+router.patch("/updateBalance", async (req, res) => {
+  try {
+    // Armazenando a requisição do body;
+    const account = req.body;
+    // Fazendo a leitura do arquivo json;
+    const data = JSON.parse(await readFile("accounts.json"));
+    // pegando o conteúdo da posição index que for verdadeira;
+    const index = data.accounts.findIndex((a) => a.id === account.id);
+    data.accounts[index].balance = account.balance;
+    await writeFile("accounts.json", JSON.stringify(data));
+    res.send(data.accounts[index]);
+  } catch {
+    res.status(400).send({ error: err.message });
+  }
+});
+
 // Exportando o roteador;
 export default router;
