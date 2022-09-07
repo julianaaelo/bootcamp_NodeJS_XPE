@@ -1,19 +1,16 @@
-import { promises as fs } from "fs";
+import accountService from "../services/account.services.js";
 
-const { readFile, writeFile } = fs;
 async function createAccount(req, res, next) {
   try {
     // armazenando as informações do body;
     let account = req.body;
-    // fazendo a leitura do arquivo json;
-    const data = JSON.parse(await readFile("accounts.json"));
-    // atualizando o id;
-    account = { id: data.nextId++, ...account };
-    // pegar o account do body e adicionar no parametro accounts do arquivo json;
-    data.accounts.push(account);
-    await writeFile("accounts.json", JSON.stringify(data));
+    if (!account.name || account.balance == null) {
+      throw new Error("Name e Balance são obrigatórios.");
+    }
+
+    account = await accountService.createAccount(account);
     res.send(account);
-    logger.info(`POST / account - ${JSON.stringify(data)}`);
+    logger.info(`POST / account - ${JSON.stringify(account)}`);
   } catch (err) {
     next(err);
   }
@@ -21,9 +18,7 @@ async function createAccount(req, res, next) {
 
 async function getAccount(req, res, next) {
   try {
-    const data = JSON.parse(await readFile("accounts.json"));
-    delete data.nextId;
-    res.send(data);
+    res.send(await accountService.getAccounts());
     logger.info(`GET / account`);
   } catch (err) {
     next(err);
@@ -32,11 +27,7 @@ async function getAccount(req, res, next) {
 
 async function getAccountId(req, res, next) {
   try {
-    const data = JSON.parse(await readFile("accounts.json"));
-    const account = data.accounts.find(
-      (account) => account.id === parseInt(req.params.id)
-    );
-    res.send(account);
+    res.send(await accountService.getAccountId(req.params.id));
     logger.info(`GET / account/:id`);
   } catch (err) {
     next(err);
@@ -45,14 +36,7 @@ async function getAccountId(req, res, next) {
 
 async function deleteAccount(req, res, next) {
   try {
-    // faz a leitura do arquivo json;
-    const data = JSON.parse(await readFile("accounts.json"));
-    // o find retorna tudo o que for verdadeiro;
-    data.accounts = data.accounts.filter(
-      (account) => account.id !== parseInt(req.params.id)
-    );
-    // sobrescreve o data atualizado no arquivo json;
-    await writeFile("accounts.json", JSON.stringify(data, null, 2));
+    await accountService.deleteAccountId(req.params.id);
     res.end();
     logger.info(`DELETE / account/:id - ${req.params.id}`);
   } catch {
@@ -64,13 +48,10 @@ async function putAccount(req, res, next) {
   try {
     // Armazenando a requisição do body;
     const account = req.body;
-    // Fazendo a leitura do arquivo json;
-    const data = JSON.parse(await readFile("accounts.json"));
-    // pegando o conteúdo da posição index que for verdadeira;
-    const index = data.accounts.findIndex((a) => a.id === account.id);
-    data.accounts[index] = account;
-    await writeFile("accounts.json", JSON.stringify(data));
-    res.send(account);
+    if (!account.id || !account.name || account.balance == null) {
+      throw new Error("Id, Name e Balance são obrigatórios.");
+    }
+    res.send(await accountService.updateAccount(account));
     logger.info(`PUT / account - ${JSON.stringify(account)}`);
   } catch (err) {
     next(err);
@@ -81,13 +62,10 @@ async function patchAccount(req, res, next) {
   try {
     // Armazenando a requisição do body;
     const account = req.body;
-    // Fazendo a leitura do arquivo json;
-    const data = JSON.parse(await readFile("accounts.json"));
-    // pegando o conteúdo da posição index que for verdadeira;
-    const index = data.accounts.findIndex((a) => a.id === account.id);
-    data.accounts[index].balance = account.balance;
-    await writeFile("accounts.json", JSON.stringify(data));
-    res.send(data.accounts[index]);
+    if (!account.id || account.balance == null) {
+      throw new Error("Id e Balance são obrigatórios.");
+    }
+    res.send(await accountService.updateBalance(account));
     logger.info(`PATCH / account/updateBalance - ${JSON.stringify(account)}`);
   } catch (err) {
     next(err);
