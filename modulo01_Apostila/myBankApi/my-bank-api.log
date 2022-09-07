@@ -45,3 +45,63 @@
 2022-09-04T12:51:59.541Z [my-bank-api] info: API rodando na porta 3000
 2022-09-04T12:52:03.442Z [my-bank-api] info: GET / account
 2022-09-04T12:52:04.184Z [my-bank-api] info: GET / account
+2022-09-07T12:30:36.863Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:30:44.438Z [my-bank-api] info: GET / account
+2022-09-07T12:31:28.022Z [my-bank-api] info: POST / account - {"nextId":7,"accounts":[{"id":2,"name":"Juliana","balance":3000},{"id":3,"name":"Milena","balance":3000},{"id":5,"name":"Maria","balance":200},{"id":6,"name":"Carol","balance":2000}]}
+2022-09-07T12:31:50.484Z [my-bank-api] info: POST / account - {"nextId":8,"accounts":[{"id":2,"name":"Juliana","balance":3000},{"id":3,"name":"Milena","balance":3000},{"id":5,"name":"Maria","balance":200},{"id":6,"name":"Carol","balance":2000},{"id":7,"name":"José","balance":2000}]}
+2022-09-07T12:33:30.333Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:33:37.172Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:34:14.301Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:34:31.455Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:34:34.055Z [my-bank-api] info: GET / account
+2022-09-07T12:36:00.261Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:36:11.953Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:36:30.059Z [my-bank-api] info: GET / account/:id
+2022-09-07T12:37:20.780Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:37:32.735Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:37:45.431Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:38:00.967Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:38:08.599Z [my-bank-api] info: DELETE / account/:id - 5
+2022-09-07T12:38:13.011Z [my-bank-api] info: GET / account/:id
+2022-09-07T12:38:17.933Z [my-bank-api] info: GET / account
+2022-09-07T12:40:11.932Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:40:27.654Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:40:50.720Z [my-bank-api] info: PUT / account - {"name":"José","balance":3500}
+2022-09-07T12:40:58.566Z [my-bank-api] info: GET / account
+2022-09-07T12:41:23.936Z [my-bank-api] info: PUT / account - {"id":7,"name":"José","balance":3500}
+2022-09-07T12:41:31.988Z [my-bank-api] info: GET / account
+2022-09-07T12:42:45.757Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:43:02.903Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:47:18.965Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:47:23.366Z [my-bank-api] info: PATCH / account/updateBalance - {"id":7,"balance":4000}
+2022-09-07T12:47:29.009Z [my-bank-api] info: GET / account/:id
+2022-09-07T12:47:33.889Z [my-bank-api] info: GET / account
+2022-09-07T12:55:03.431Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:55:08.040Z [my-bank-api] info: GET / account
+2022-09-07T12:55:53.635Z [my-bank-api] info: POST / account - {"nextId":9,"accounts":[{"id":2,"name":"Juliana","balance":3000},{"id":3,"name":"Milena","balance":3000},{"id":6,"name":"Carol","balance":2000},{"id":7,"name":"José","balance":4000},{"id":8,"name":"Camila","balance":3000}]}
+2022-09-07T12:56:05.992Z [my-bank-api] info: GET / account
+2022-09-07T12:57:18.779Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:57:21.883Z [my-bank-api] info: GET / account
+2022-09-07T12:57:41.247Z [my-bank-api] info: POST / account - {"nextId":10,"accounts":[{"id":2,"name":"Juliana","balance":3000},{"id":3,"name":"Milena","balance":3000},{"id":6,"name":"Carol","balance":2000},{"id":7,"name":"José","balance":4000},{"id":8,"name":"Camila","balance":3000},{"id":9,"name":"Camila","balance":3000}]}
+2022-09-07T12:58:27.385Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:58:31.060Z [my-bank-api] info: POST / account - {"nextId":11,"accounts":[{"id":2,"name":"Juliana","balance":3000},{"id":3,"name":"Milena","balance":3000},{"id":6,"name":"Carol","balance":2000},{"id":7,"name":"José","balance":4000},{"id":8,"name":"Camila","balance":3000},{"id":9,"name":"Camila","balance":3000},{"id":10,"name":"Camila","balance":3000}]}
+2022-09-07T12:59:21.661Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:59:24.407Z [my-bank-api] info: POST / account - {"nextId":12,"accounts":[{"id":2,"name":"Juliana","balance":3000},{"id":3,"name":"Milena","balance":3000},{"id":6,"name":"Carol","balance":2000},{"id":7,"name":"José","balance":4000},{"id":8,"name":"Camila","balance":3000},{"id":9,"name":"Camila","balance":3000},{"id":10,"name":"Camila","balance":3000},{"id":11,"name":"Camila","balance":3000}]}
+2022-09-07T12:59:48.330Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T12:59:51.307Z [my-bank-api] info: POST / account - {"nextId":13,"accounts":[{"id":2,"name":"Juliana","balance":3000},{"id":3,"name":"Milena","balance":3000},{"id":6,"name":"Carol","balance":2000},{"id":7,"name":"José","balance":4000},{"id":8,"name":"Camila","balance":3000},{"id":9,"name":"Camila","balance":3000},{"id":10,"name":"Camila","balance":3000},{"id":11,"name":"Camila","balance":3000},{"id":12,"name":"Camila","balance":3000}]}
+2022-09-07T12:59:59.108Z [my-bank-api] info: GET / account
+2022-09-07T13:00:12.447Z [my-bank-api] info: DELETE / account/:id - 12
+2022-09-07T13:00:18.425Z [my-bank-api] info: DELETE / account/:id - 11
+2022-09-07T13:00:21.729Z [my-bank-api] info: DELETE / account/:id - 10
+2022-09-07T13:00:25.537Z [my-bank-api] info: GET / account/:id
+2022-09-07T13:00:30.095Z [my-bank-api] info: GET / account
+2022-09-07T13:00:43.649Z [my-bank-api] info: DELETE / account/:id - 9
+2022-09-07T13:00:50.202Z [my-bank-api] info: GET / account
+2022-09-07T13:00:57.347Z [my-bank-api] info: GET / account/:id
+2022-09-07T13:01:28.192Z [my-bank-api] info: PUT / account - {"id":8,"name":"Camila S.","balance":3500}
+2022-09-07T13:02:41.123Z [my-bank-api] info: PATCH / account/updateBalance - {"id":7,"balance":1000}
+2022-09-07T13:02:46.639Z [my-bank-api] info: GET / account/:id
+2022-09-07T13:02:52.026Z [my-bank-api] info: GET / account
+2022-09-07T13:03:17.428Z [my-bank-api] info: API rodando na porta 3000
+2022-09-07T13:03:38.338Z [my-bank-api] info: GET / account
+2022-09-07T13:03:44.108Z [my-bank-api] info: POST / account - {"nextId":14,"accounts":[{"id":2,"name":"Juliana","balance":3000},{"id":3,"name":"Milena","balance":3000},{"id":6,"name":"Carol","balance":2000},{"id":7,"name":"José","balance":1000},{"id":8,"name":"Camila S.","balance":3500},{"id":13,"name":"Kelly","balance":1000}]}

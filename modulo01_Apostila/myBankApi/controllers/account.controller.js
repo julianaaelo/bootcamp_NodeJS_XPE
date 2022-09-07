@@ -1,13 +1,7 @@
-// Importando express;
-import express from "express";
 import { promises as fs } from "fs";
 
 const { readFile, writeFile } = fs;
-
-// Criando objeto para roteador
-const router = express.Router();
-
-router.post("/", async (req, res, next) => {
+async function createAccount(req, res, next) {
   try {
     // armazenando as informações do body;
     let account = req.body;
@@ -18,14 +12,14 @@ router.post("/", async (req, res, next) => {
     // pegar o account do body e adicionar no parametro accounts do arquivo json;
     data.accounts.push(account);
     await writeFile("accounts.json", JSON.stringify(data));
-    res.send(data);
+    res.send(account);
     logger.info(`POST / account - ${JSON.stringify(data)}`);
   } catch (err) {
     next(err);
   }
-});
+}
 
-router.get("/", async (req, res, next) => {
+async function getAccount(req, res, next) {
   try {
     const data = JSON.parse(await readFile("accounts.json"));
     delete data.nextId;
@@ -34,9 +28,9 @@ router.get("/", async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-});
+}
 
-router.get("/:id", async (req, res, next) => {
+async function getAccountId(req, res, next) {
   try {
     const data = JSON.parse(await readFile("accounts.json"));
     const account = data.accounts.find(
@@ -47,9 +41,9 @@ router.get("/:id", async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-});
+}
 
-router.delete("/:id", async (req, res, next) => {
+async function deleteAccount(req, res, next) {
   try {
     // faz a leitura do arquivo json;
     const data = JSON.parse(await readFile("accounts.json"));
@@ -64,9 +58,9 @@ router.delete("/:id", async (req, res, next) => {
   } catch {
     next(err);
   }
-});
+}
 
-router.put("/", async (req, res, next) => {
+async function putAccount(req, res, next) {
   try {
     // Armazenando a requisição do body;
     const account = req.body;
@@ -81,9 +75,9 @@ router.put("/", async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-});
+}
 
-router.patch("/updateBalance", async (req, res, next) => {
+async function patchAccount(req, res, next) {
   try {
     // Armazenando a requisição do body;
     const account = req.body;
@@ -95,15 +89,16 @@ router.patch("/updateBalance", async (req, res, next) => {
     await writeFile("accounts.json", JSON.stringify(data));
     res.send(data.accounts[index]);
     logger.info(`PATCH / account/updateBalance - ${JSON.stringify(account)}`);
-  } catch {
+  } catch (err) {
     next(err);
   }
-});
+}
 
-router.use((err, req, res, next) => {
-  global.logger.error(`${err.message}`);
-  res.status(400).send({ error: err.message });
-});
-
-// Exportando o roteador;
-export default router;
+export default {
+  createAccount,
+  getAccount,
+  getAccountId,
+  deleteAccount,
+  putAccount,
+  patchAccount,
+};

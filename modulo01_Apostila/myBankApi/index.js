@@ -1,7 +1,7 @@
 // Importar express;
 import express from "express";
 // Importando o roteador accounts
-import accountsRouter from "./routes/accounts.js";
+import accountsRouter from "./routes/account.route.js";
 import winston from "winston";
 
 const { combine, timestamp, label, printf } = winston.format;
