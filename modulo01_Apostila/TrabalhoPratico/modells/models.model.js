@@ -40,14 +40,47 @@ async function getFewerModelsModel() {
 async function getListModelModels(x) {
   const data = JSON.parse(await readFile("carList.json"));
 
-  data.sort((brand) => {
-    return brand;
+  const dataOrd = data.sort((a, b) => {
+    if (a.models.length > b.models.length) {
+      return -1;
+    } else {
+      return true;
+    }
   });
+  console.log(dataOrd);
+  let listModels = [];
+  for (let i = 0; i < dataOrd.length; i++) {
+    if (listModels.length < x * 2) {
+      listModels.push(dataOrd[i].brand, dataOrd[i].models.length);
+    }
+  }
+  return listModels;
 }
 
-getListModelModels();
+async function getListMinModelModels(x) {
+  const data = JSON.parse(await readFile("carList.json"));
+
+  const dataOrd = data.sort((a, b) => {
+    if (a.models.length < b.models.length) {
+      return -1;
+    } else {
+      return true;
+    }
+  });
+  let listModels = [];
+  for (let i = 0; i < dataOrd.length; i++) {
+    if (listModels.length < x * 2) {
+      listModels.push(dataOrd[i].brand, dataOrd[i].models.length);
+    }
+  }
+  return listModels;
+}
+
+getListMinModelModels();
 
 export default {
   getMoreModelsModels,
   getFewerModelsModel,
+  getListModelModels,
+  getListMinModelModels,
 };
