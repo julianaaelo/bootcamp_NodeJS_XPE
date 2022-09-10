@@ -41,10 +41,10 @@ async function getListModelModels(x) {
   const data = JSON.parse(await readFile("carList.json"));
 
   const dataOrd = data.sort((a, b) => {
-    if (a.models.length > b.models.length) {
-      return -1;
+    if (a.models.length === b.models.length) {
+      return a.brand.localeCompare(b.brand);
     } else {
-      return true;
+      return b.models.length - a.models.length;
     }
   });
   console.log(dataOrd);
@@ -61,12 +61,13 @@ async function getListMinModelModels(x) {
   const data = JSON.parse(await readFile("carList.json"));
 
   const dataOrd = data.sort((a, b) => {
-    if (a.models.length < b.models.length) {
-      return -1;
+    if (a.models.length === b.models.length) {
+      return a.brand.localeCompare(b.brand);
     } else {
-      return true;
+      return a.models.length - b.models.length;
     }
   });
+
   let listModels = [];
   for (let i = 0; i < dataOrd.length; i++) {
     if (listModels.length < x * 2) {
