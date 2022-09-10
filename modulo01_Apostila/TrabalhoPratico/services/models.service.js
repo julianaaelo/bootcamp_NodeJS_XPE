@@ -16,9 +16,20 @@ async function getListMinModelService(x) {
   return await modelsModel.getListMinModelModels(x);
 }
 
+async function listModelsService(nomeMarca) {
+  const brand = await modelsModel.listModelsModel(nomeMarca);
+  console.log(brand);
+  if (brand) {
+    return brand.models;
+  } else {
+    return [];
+  }
+}
+
 export default {
   getMoreModelsService,
   getFewerModelsService,
   getListModelService,
   getListMinModelService,
+  listModelsService,
 };

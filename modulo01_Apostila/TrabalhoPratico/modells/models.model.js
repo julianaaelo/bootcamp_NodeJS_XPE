@@ -77,11 +77,18 @@ async function getListMinModelModels(x) {
   return listModels;
 }
 
-getListMinModelModels();
+async function listModelsModel(nomeMarca) {
+  const data = JSON.parse(await readFile("carList.json"));
+  const brand = data.find(
+    (b) => b.brand.toUpperCase() === nomeMarca.toUpperCase()
+  );
+  return brand;
+}
 
 export default {
   getMoreModelsModels,
   getFewerModelsModel,
   getListModelModels,
   getListMinModelModels,
+  listModelsModel,
 };

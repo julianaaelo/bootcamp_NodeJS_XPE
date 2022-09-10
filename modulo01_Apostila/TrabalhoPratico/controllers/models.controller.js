@@ -32,9 +32,18 @@ async function getListMinModelController(req, res, next) {
   }
 }
 
+async function listModelsController(req, res, next) {
+  try {
+    res.send(await modelsService.listModelsService(req.body.nomeMarca));
+  } catch (err) {
+    next(err);
+  }
+}
+
 export default {
   getMoreModelsController,
   getFewerModelsController,
   getListModelController,
   getListMinModelController,
+  listModelsController,
 };
