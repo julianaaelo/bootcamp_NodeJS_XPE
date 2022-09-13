@@ -12,5 +12,9 @@ router.put(
 router.delete("/deletePedido/:id", pedidosRouter.deletarPedidoController);
 router.get("/buscarPedido/:id", pedidosRouter.buscarPedidoIdController);
 router.get("/valorTotalPedido", pedidosRouter.buscarvalorTotalPedidoController);
+router.get(
+  "/valorTotalPedidoproduto",
+  pedidosRouter.buscarvalorTotalPedidoProdutoController
+);
 
 export default router;

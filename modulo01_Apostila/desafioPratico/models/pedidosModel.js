@@ -87,12 +87,27 @@ async function buscarvalorTotalPedidoModel(cliente) {
   const historicoCliente = data.pedidos.filter(
     (p) => p.cliente === cliente && p.entregue === true
   );
-  console.log(historicoCliente);
+
   const totalCliente = historicoCliente.reduce(
     (valorInicial, pedido) => valorInicial + pedido.valor,
     0
   );
+  console.log(totalCliente);
   return totalCliente;
+}
+
+async function buscarvalorTotalPedidoProdutoModel(produto) {
+  const data = JSON.parse(await readFile("pedidos.json"));
+
+  const historicoProduto = data.pedidos.filter(
+    (p) => p.produto === produto && p.entregue === true
+  );
+  const totalProduto = historicoProduto.reduce(
+    (valorInicial, pedido) => valorInicial + pedido.valor,
+    0
+  );
+
+  return totalProduto;
 }
 
 export default {
@@ -102,4 +117,5 @@ export default {
   deletarPedidoModel,
   buscarPedidoIdModel,
   buscarvalorTotalPedidoModel,
+  buscarvalorTotalPedidoProdutoModel,
 };

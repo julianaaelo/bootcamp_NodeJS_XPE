@@ -70,8 +70,20 @@ async function buscarvalorTotalPedidoController(req, res, next) {
     const somaValor = await pedidosService.buscarvalorTotalPedidoService(
       cliente
     );
+    res.status(200).json(somaValor);
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function buscarvalorTotalPedidoProdutoController(req, res, next) {
+  try {
+    const { produto } = req.query;
+    const somaValor = await pedidosService.buscarvalorTotalPedidoProdutoService(
+      produto
+    );
     console.log(somaValor);
-    res.sendStatus(somaValor);
+    res.status(200).json(somaValor);
   } catch (err) {
     next(err);
   }
@@ -84,4 +96,5 @@ export default {
   deletarPedidoController,
   buscarPedidoIdController,
   buscarvalorTotalPedidoController,
+  buscarvalorTotalPedidoProdutoController,
 };
