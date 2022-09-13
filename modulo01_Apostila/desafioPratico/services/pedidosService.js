@@ -26,10 +26,15 @@ async function buscarPedidoIdService(id) {
   return await pedidosModel.buscarPedidoIdModel(id);
 }
 
+async function buscarvalorTotalPedidoService(cliente) {
+  return await pedidosModel.buscarvalorTotalPedidoModel(cliente);
+}
+
 export default {
   criaPedidosService,
   atualizaPedidosService,
   atualizaStatusPedidosService,
   deletarPedidoService,
   buscarPedidoIdService,
+  buscarvalorTotalPedidoService,
 };

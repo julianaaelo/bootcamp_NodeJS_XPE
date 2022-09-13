@@ -81,10 +81,25 @@ async function buscarPedidoIdModel(id) {
   return buscarPedido;
 }
 
+async function buscarvalorTotalPedidoModel(cliente) {
+  const data = JSON.parse(await readFile("pedidos.json"));
+
+  const historicoCliente = data.pedidos.filter(
+    (p) => p.cliente === cliente && p.entregue === true
+  );
+  console.log(historicoCliente);
+  const totalCliente = historicoCliente.reduce(
+    (valorInicial, pedido) => valorInicial + pedido.valor,
+    0
+  );
+  return totalCliente;
+}
+
 export default {
   criaPedidosModel,
   atualizaPedidosModel,
   atualizaStatusPedidosModel,
   deletarPedidoModel,
   buscarPedidoIdModel,
+  buscarvalorTotalPedidoModel,
 };

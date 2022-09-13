@@ -64,10 +64,24 @@ async function buscarPedidoIdController(req, res, next) {
   }
 }
 
+async function buscarvalorTotalPedidoController(req, res, next) {
+  try {
+    const { cliente } = req.query;
+    const somaValor = await pedidosService.buscarvalorTotalPedidoService(
+      cliente
+    );
+    console.log(somaValor);
+    res.sendStatus(somaValor);
+  } catch (err) {
+    next(err);
+  }
+}
+
 export default {
   criaPedidoController,
   atualizaPedidoController,
   atualizaStatusPedidoController,
   deletarPedidoController,
   buscarPedidoIdController,
+  buscarvalorTotalPedidoController,
 };
