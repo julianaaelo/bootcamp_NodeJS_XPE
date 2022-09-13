@@ -74,9 +74,17 @@ async function deletarPedidoModel(id) {
   await writeFile("pedidos.json", JSON.stringify(data, null, 2));
 }
 
+async function buscarPedidoIdModel(id) {
+  const data = JSON.parse(await readFile("pedidos.json"));
+
+  const buscarPedido = data.pedidos.filter((p) => p.id === id);
+  return buscarPedido;
+}
+
 export default {
   criaPedidosModel,
   atualizaPedidosModel,
   atualizaStatusPedidosModel,
   deletarPedidoModel,
+  buscarPedidoIdModel,
 };

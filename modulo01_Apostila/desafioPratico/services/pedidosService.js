@@ -22,9 +22,14 @@ async function deletarPedidoService(id) {
   return await pedidosModel.deletarPedidoModel(id);
 }
 
+async function buscarPedidoIdService(id) {
+  return await pedidosModel.buscarPedidoIdModel(id);
+}
+
 export default {
   criaPedidosService,
   atualizaPedidosService,
   atualizaStatusPedidosService,
   deletarPedidoService,
+  buscarPedidoIdService,
 };

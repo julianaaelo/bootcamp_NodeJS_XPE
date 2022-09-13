@@ -10,5 +10,6 @@ router.put(
   pedidosRouter.atualizaStatusPedidoController
 );
 router.delete("/deletePedido/:id", pedidosRouter.deletarPedidoController);
+router.get("/buscarPedido/:id", pedidosRouter.buscarPedidoIdController);
 
 export default router;

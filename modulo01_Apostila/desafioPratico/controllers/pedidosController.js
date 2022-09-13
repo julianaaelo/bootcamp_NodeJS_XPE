@@ -54,9 +54,20 @@ async function deletarPedidoController(req, res, next) {
   }
 }
 
+async function buscarPedidoIdController(req, res, next) {
+  try {
+    const { id } = req.params;
+    const buscarpedido = await pedidosService.buscarPedidoIdService(+id);
+    res.send(buscarpedido);
+  } catch (err) {
+    next(err);
+  }
+}
+
 export default {
   criaPedidoController,
   atualizaPedidoController,
   atualizaStatusPedidoController,
   deletarPedidoController,
+  buscarPedidoIdController,
 };
