@@ -44,7 +44,31 @@ async function atualizaPedidosModel(id, cliente, produto, valor, entregue) {
   return pedidoAtualizado;
 }
 
+async function atualizaStatusPedidosModel(id, entregue) {
+  const data = JSON.parse(await readFile("pedidos.json"));
+
+  let pedido = data.pedidos.findIndex((p) => p.id == id);
+  if (pedido === -1) {
+    return "Pedido não encontrado!";
+  }
+
+  let pedidoAtualizado = {
+    id: id,
+    cliente: data.pedidos[pedido].cliente,
+    produto: data.pedidos[pedido].produto,
+    valor: data.pedidos[pedido].valor,
+    entregue: entregue,
+    timestamp: data.pedidos[pedido].timestamp,
+  };
+
+  data.pedidos[pedido] = pedidoAtualizado;
+
+  await writeFile("pedidos.json", JSON.stringify(data, null, 2));
+  return pedidoAtualizado;
+}
+
 export default {
   criaPedidosModel,
   atualizaPedidosModel,
+  atualizaStatusPedidosModel,
 };

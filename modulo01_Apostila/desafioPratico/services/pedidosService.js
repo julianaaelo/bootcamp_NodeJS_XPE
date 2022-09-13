@@ -14,7 +14,12 @@ async function atualizaPedidosService(id, cliente, produto, valor, entregue) {
   );
 }
 
+async function atualizaStatusPedidosService(id, entregue) {
+  return await pedidosModel.atualizaStatusPedidosModel(id, entregue);
+}
+
 export default {
   criaPedidosService,
   atualizaPedidosService,
+  atualizaStatusPedidosService,
 };

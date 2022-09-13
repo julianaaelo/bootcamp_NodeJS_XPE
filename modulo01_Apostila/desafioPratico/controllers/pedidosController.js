@@ -28,7 +28,24 @@ async function atualizaPedidoController(req, res, next) {
   }
 }
 
+async function atualizaStatusPedidoController(req, res, next) {
+  try {
+    const { id } = req.params;
+    const { entregue } = req.body;
+
+    const pedido = await pedidosService.atualizaStatusPedidosService(
+      +id,
+      entregue
+    );
+    console.log(pedido);
+    res.send(pedido);
+  } catch (err) {
+    next(err);
+  }
+}
+
 export default {
   criaPedidoController,
   atualizaPedidoController,
+  atualizaStatusPedidoController,
 };

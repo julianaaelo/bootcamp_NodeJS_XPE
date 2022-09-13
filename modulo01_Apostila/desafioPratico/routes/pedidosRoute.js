@@ -5,5 +5,9 @@ const router = express.Router();
 
 router.post("/criaPedido", pedidosController.criaPedidoController);
 router.put("/atualizaPedido/:id", pedidosController.atualizaPedidoController);
+router.put(
+  "/atualizaStatusPedido/:id",
+  pedidosController.atualizaStatusPedidoController
+);
 
 export default router;
