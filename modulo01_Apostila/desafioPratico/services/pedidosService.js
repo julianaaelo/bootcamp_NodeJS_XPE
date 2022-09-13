@@ -18,8 +18,13 @@ async function atualizaStatusPedidosService(id, entregue) {
   return await pedidosModel.atualizaStatusPedidosModel(id, entregue);
 }
 
+async function deletarPedidoService(id) {
+  return await pedidosModel.deletarPedidoModel(id);
+}
+
 export default {
   criaPedidosService,
   atualizaPedidosService,
   atualizaStatusPedidosService,
+  deletarPedidoService,
 };

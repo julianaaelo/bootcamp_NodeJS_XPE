@@ -37,7 +37,7 @@ async function insertAccount(account) {
 async function deleteAccountId(id) {
   // faz a leitura do arquivo json;
   const data = JSON.parse(await readFile("accounts.json"));
-  // o find retorna tudo o que for verdadeiro;
+  // o filter retorna tudo o que for verdadeiro;
   data.accounts = data.accounts.filter(
     (account) => account.id !== parseInt(id)
   );

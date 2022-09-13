@@ -44,8 +44,19 @@ async function atualizaStatusPedidoController(req, res, next) {
   }
 }
 
+async function deletarPedidoController(req, res, next) {
+  try {
+    const { id } = req.params;
+    const dataAtualizado = await pedidosService.deletarPedidoService(+id);
+    res.end();
+  } catch (err) {
+    next(err);
+  }
+}
+
 export default {
   criaPedidoController,
   atualizaPedidoController,
   atualizaStatusPedidoController,
+  deletarPedidoController,
 };

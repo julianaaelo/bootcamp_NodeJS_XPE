@@ -67,8 +67,16 @@ async function atualizaStatusPedidosModel(id, entregue) {
   return pedidoAtualizado;
 }
 
+async function deletarPedidoModel(id) {
+  const data = JSON.parse(await readFile("pedidos.json"));
+
+  data.pedidos = data.pedidos.filter((p) => p.id !== id);
+  await writeFile("pedidos.json", JSON.stringify(data, null, 2));
+}
+
 export default {
   criaPedidosModel,
   atualizaPedidosModel,
   atualizaStatusPedidosModel,
+  deletarPedidoModel,
 };
